@@ -1,9 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.skymatic</groupId>
+    <groupId>de.skymatic.javafxtest</groupId>
     <artifactId>javafx-helloworld</artifactId>
     <version>0.0.1</version>
+    <description>Creates a JavaFx demo application and bundles it in packages for different OS.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -31,7 +32,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
                 <configuration>
-                    <mainClass>org.skymatic.App</mainClass>
+                    <mainClass>de.skymatic.javafxtest.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>

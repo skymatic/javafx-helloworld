@@ -1,4 +1,4 @@
-module org.skymatic {
+module de.skymatic.javafxtest {
     requires javafx.controls;
-    exports org.skymatic;
+    exports de.skymatic.javafxtest;
 }
