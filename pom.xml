@@ -152,6 +152,8 @@
                         <argument>${project.groupId}</argument>
                         <argument>"--output"</argument>
                         <argument>./runtime</argument>
+                        <argument>"--strip-debug"</argument>
+                        <argument>"--compress=2"</argument>
                     </arguments>
                 </configuration>
             </plugin>
