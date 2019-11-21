@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.skymatic.javafxtest</groupId>
     <artifactId>javafx-helloworld</artifactId>
@@ -30,12 +30,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifest>
                             <!-- adds Implementation-Version which can be read during runtime -->
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <!-- TODO: look if this is the right attribute -->
                             <mainClass>de.skymatic.javafxtest.App</mainClass>
                         </manifest>
                     </archive>
@@ -88,6 +88,7 @@
                             <excludeArtifactIds>java-utils</excludeArtifactIds>
                         </configuration>
                     </execution>
+                    <!-- it is possible that we do not need them
                     <execution>
                         <id>copy-linux-libs</id>
                         <phase>prepare-package</phase>
@@ -124,9 +125,36 @@
                             <classifier>win</classifier>
                         </configuration>
                     </execution>
+                -->
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>jlink</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>jlink</executable>
+                    <!-- optional -->
+                    <workingDirectory>${project.build.directory}</workingDirectory>
+                    <arguments>
+                        <argument>"--module-path"</argument>
+                        <argument>.\libs</argument>
+                        <argument>"--add-modules"</argument>
+                        <argument>${project.groupId}</argument>
+                        <argument>"--output"</argument>
+                        <argument>./runtime</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
             <!-- Currently skipped
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
