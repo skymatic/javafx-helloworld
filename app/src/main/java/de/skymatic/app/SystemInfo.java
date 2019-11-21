@@ -1,4 +1,4 @@
-package de.skymatic.javafxtest;
+package de.skymatic.app;
 
 public class SystemInfo {
 

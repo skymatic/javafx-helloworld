@@ -2,4 +2,4 @@
 java \
 	-Djdk.gtk.version=2 \
     -p ".;.\libs" \
-    -m de.skymatic.javafxtest/de.skymatic.javafxtest.App
+    -m de.skymatic.app/de.skymatic.app.App
