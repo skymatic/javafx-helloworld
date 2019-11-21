@@ -5,19 +5,20 @@
     <artifactId>javafx-helloworld</artifactId>
     <version>0.0.1</version>
     <description>Creates a JavaFx demo application and bundles it in packages for different OS.</description>
-    <packaging>pom</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-    <modules>
-        <module>app</module>
-        <module>mod-jlink</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>13</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
-            <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -32,9 +33,10 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <! adds Implementation-Version which can be read during runtime  >
+                            <!-- adds Implementation-Version which can be read during runtime -->
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <mainClass>de.skymatic.app</mainClass>
+                            <!-- TODO: look if this is the right attribute -->
+                            <mainClass>de.skymatic.javafxtest.App</mainClass>
                         </manifest>
                     </archive>
                     <outputDirectory>${project.build.directory}/libs</outputDirectory>
@@ -124,23 +126,7 @@
                     </execution>
                 </executions>
             </plugin>
-            -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jlink-plugin</artifactId>
-                <version>3.0.0-alpha-1</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <addModules>
-                        <addModule>de.skymatic.app</addModule>
-                    </addModules>
-                    <noHeaderFiles>true</noHeaderFiles>
-                    <noManPages>true</noManPages>
-                    <stripDebug>true</stripDebug>
-                    <compression>2</compression>
-                    <verbose>true</verbose>
-                </configuration>
-            </plugin>
+
             <!-- Currently skipped
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -191,15 +177,15 @@
                 </executions>
             </plugin>
 
+            -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.3</version>
                 <configuration>
-                    <mainClass>main.java.de.skymatic.app.App</mainClass>
+                    <mainClass>de.skymatic.javafxtest.App</mainClass>
                 </configuration>
             </plugin>
-    -->
         </plugins>
     </build>
 </project>

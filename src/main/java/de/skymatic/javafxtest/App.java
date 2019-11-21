@@ -1,4 +1,4 @@
-package de.skymatic.app;
+package de.skymatic.javafxtest;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
