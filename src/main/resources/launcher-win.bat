@@ -1,4 +1,5 @@
 @echo off
-java ^
-    -p ".;.\libs" ^
+@echo off
+SET path=%~dp0
+"%path%runtime\bin\java.exe" ^
     -m de.skymatic.javafxtest/de.skymatic.javafxtest.App

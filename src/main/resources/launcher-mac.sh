@@ -1,4 +1,3 @@
 #!/bin/sh
-java \
-    -p ".;.\libs" \
+./runtime/bin/java \
     -m de.skymatic.javafxtest/de.skymatic.javafxtest.App

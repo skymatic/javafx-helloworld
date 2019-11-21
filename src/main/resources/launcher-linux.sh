@@ -1,5 +1,4 @@
 #!/bin/sh
-java \
+./runtime/bin/java \
 	-Djdk.gtk.version=2 \
-    -p ".;.\libs" \
     -m de.skymatic.javafxtest/de.skymatic.javafxtest.App
