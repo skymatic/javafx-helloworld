@@ -30,18 +30,18 @@
 			<fileMode>0755</fileMode>
 		</fileSet>
 		<fileSet>
-			<directory>target/libs</directory>
+			<directory>target/</directory>
 			<includes>
-				<include>*.jar</include>
+				<include>runtime</include>
 			</includes>
-			<outputDirectory>libs</outputDirectory>
+			<outputDirectory></outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>target/linux-libs</directory>
+			<directory>target/runtime</directory>
 			<includes>
-				<include>*.jar</include>
+				<include>**/**</include>
 			</includes>
-			<outputDirectory>libs</outputDirectory>
+			<outputDirectory>runtime</outputDirectory>
 		</fileSet>
 	</fileSets>
 </assembly>

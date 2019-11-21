@@ -157,7 +157,6 @@
                     </arguments>
                 </configuration>
             </plugin>
-            <!-- Currently skipped
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.1</version>
@@ -173,7 +172,7 @@
                                 <descriptor>assembly-linux.xml</descriptor>
                             </descriptors>
                             <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>buildkit-linux</finalName>
+                            <finalName>testkit-linux</finalName>
                         </configuration>
                     </execution>
                     <execution>
@@ -187,7 +186,7 @@
                                 <descriptor>assembly-mac.xml</descriptor>
                             </descriptors>
                             <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>buildkit-mac</finalName>
+                            <finalName>testkit-mac</finalName>
                         </configuration>
                     </execution>
                     <execution>
@@ -201,13 +200,12 @@
                                 <descriptor>assembly-win.xml</descriptor>
                             </descriptors>
                             <appendAssemblyId>false</appendAssemblyId>
-                            <finalName>buildkit-win</finalName>
+                            <finalName>testkit-win</finalName>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
 
-            -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
