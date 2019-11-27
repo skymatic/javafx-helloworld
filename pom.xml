@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.skymatic.javafxtest</groupId>
     <artifactId>javafx-helloworld</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.0</version>
     <description>Creates a JavaFx demo application and bundles it in packages for different OS.</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
