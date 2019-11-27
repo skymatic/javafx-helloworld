@@ -43,7 +43,7 @@
                                     </descriptors>
                                     <appendAssemblyId>false</appendAssemblyId>
                                     <!-- TODO: this is just named this way, because the github action upload-artifact does not support wildcards -->
-                                    <finalName>testkit-windows-latest</finalName>
+                                    <finalName>javafx-testkit-windows-latest</finalName>
                                 </configuration>
                             </execution>
                         </executions>
@@ -76,7 +76,7 @@
                                     </descriptors>
                                     <appendAssemblyId>false</appendAssemblyId>
                                     <!-- TODO: this is just named this way, because the github action upload-artifact does not support wildcards -->
-                                    <finalName>testkit-ubuntu-latest</finalName>
+                                    <finalName>javafx-testkit-ubuntu-latest</finalName>
                                 </configuration>
                             </execution>
                         </executions>
@@ -109,7 +109,7 @@
                                     </descriptors>
                                     <appendAssemblyId>false</appendAssemblyId>
                                     <!-- TODO: this is just named this way, because the github action upload-artifact does not support wildcards -->
-                                    <finalName>testkit-macOS-latest</finalName>
+                                    <finalName>javafx-testkit-macOS-latest</finalName>
                                 </configuration>
                             </execution>
                         </executions>
