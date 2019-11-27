@@ -23,4 +23,4 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: javafx-testkit-${{matrix.os}}
-        path: target/javafx-testkit-${{matrix.os}}
+        path: target/javafx-testkit-${{matrix.os}}.zip
