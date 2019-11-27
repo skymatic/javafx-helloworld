@@ -22,5 +22,5 @@ jobs:
     - name: Uploads the build artifacts to use it in a possible release
       uses: actions/upload-artifact@v1
       with:
-        name: my-artifact-${{matrix.os}}
-        path: build/artifacts
+        name: buildkit-*${{matrix.os}}
+        path: target/
