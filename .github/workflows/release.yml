@@ -49,7 +49,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: javafx-testkit-ubuntu-latest.zip
-      - run: ls ./javafx-testkit-ubuntu-latest.zip
+      - run: cat ./javafx-testkit-ubuntu-latest.zip/javafx-testkit-ubuntu-latest.zip
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
