@@ -54,7 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./javafx-testkit-windows-latest.zip
+          asset_path: /home/runner/work/javafx-helloworld/javafx-helloworld/javafx-testkit-windows-latest.zip
           asset_name: javafx-testkit-windows.zip
           asset_content_type: application/zip
       - name: Downloads generated files (Linux)
@@ -66,7 +66,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./javafx-testkit-ubuntu-latest.zip
+          asset_path: /home/runner/work/javafx-helloworld/javafx-helloworld/javafx-testkit-ubuntu-latest.zip
           asset_name: javafx-testkit-linux.zip
           asset_content_type: application/zip
       - name: Downloads generated files (MacOS)
@@ -78,6 +78,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./javafx-testkit-macOS-latest.zip
+          asset_path: /home/runner/work/javafx-helloworld/javafx-helloworld/javafx-testkit-macOS-latest.zip
           asset_name: javafx-testkit-macOS.zip
           asset_content_type: application/zip
