@@ -48,7 +48,7 @@ jobs:
       - name: Downloads generated files (Windows)
         uses: actions/download-artifact@v1
         with:
-          name: javafx-testkit-windows-latest
+          name: javafx-testkit-windows-latest.zip
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -60,7 +60,7 @@ jobs:
       - name: Downloads generated files (Linux)
         uses: actions/download-artifact@v1
         with:
-          name: javafx-testkit-ubuntu-latest
+          name: javafx-testkit-ubuntu-latest.zip
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -72,7 +72,7 @@ jobs:
       - name: Downloads generated files (MacOS)
         uses: actions/download-artifact@v1
         with:
-          name: javafx-testkit-macOS-latest
+          name: javafx-testkit-macOS-latest.zip
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
