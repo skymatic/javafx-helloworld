@@ -49,38 +49,35 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: javafx-testkit-ubuntu-latest.zip
-          path: /download/javafx-testkit-ubuntu-latest.zip
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./javafx-testkit-ubuntu-latest.zip
+          asset_path: ./javafx-testkit-ubuntu-latest.zip/javafx-testkit-ubuntu-latest.zip
           asset_name: javafx-testkit-linux.zip
           asset_content_type: application/zip
       - name: Downloads generated files (Windows)
         uses: actions/download-artifact@v1
         with:
-          name: javafx-testkit-windows-latest.zip    
-          path: /download/javafx-testkit-windows-latest.zip
+          name: javafx-testkit-windows-latest.zip
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /download/javafx-testkit-windows-latest.zip
+          asset_path: ./javafx-testkit-windows-latest.zip/javafx-testkit-windows-latest.zip
           asset_name: javafx-testkit-windows.zip
           asset_content_type: application/zip    
       - name: Downloads generated files (MacOS)
         uses: actions/download-artifact@v1
         with:
           name: javafx-testkit-macOS-latest.zip
-          path: /download/javafx-testkit-macOS-latest.zip
       - uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: /download/javafx-testkit-macOS-latest.zip
+          asset_path: ./javafx-testkit-macOS-latest.zip/javafx-testkit-macOS-latest.zip
           asset_name: javafx-testkit-macOS.zip
           asset_content_type: application/zip
