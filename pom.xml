@@ -4,11 +4,35 @@
     <groupId>de.skymatic.javafxtest</groupId>
     <artifactId>javafx-helloworld</artifactId>
     <version>1.0.0</version>
+
+    <organization>
+        <name>Skymatic</name>
+        <url>https://skymatic.de</url>
+    </organization>
+
+    <name>JavaFX Hello World Example</name>
     <description>Creates a JavaFx demo application and bundles it in packages for different OS.</description>
+    <url>https://github.com/skymatic/javafx-helloworld</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:skymatic/javafx-helloworld.git</connection>
+        <developerConnection>scm:git:git@github.com:skymatic/javafx-helloworld.git</developerConnection>
+        <url>git@github.com:skymatic/javafx-helloworld.git</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Armin Schrenk</name>
+            <email>armin.Schrenk@skymatic.de</email>
+            <timezone>+1</timezone>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>14</maven.compiler.release>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -16,6 +40,7 @@
             <version>14</version>
         </dependency>
     </dependencies>
+
     <profiles>
         <profile>
             <id>windows</id>
@@ -117,6 +142,7 @@
             </build>
         </profile>
     </profiles>
+
     <build>
         <plugins>
             <plugin>
