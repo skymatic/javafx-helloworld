@@ -16,7 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
     outputs:
-      artifact-version: ${{ steps.setversion.outputs.version }}
+      artifact-version: SNAPSHOT #${{ steps.setversion.outputs.version }}
     env:
       BUILD_VERSION: SNAPSHOT
     steps:
@@ -34,12 +34,13 @@ jobs:
     - name: Ensure to use tagged version
       run: mvn versions:set --file pom.xml -DnewVersion=${GITHUB_REF##*/} # use shell parameter expansion to strip of 'refs/tags'
       if: startsWith(github.ref, 'refs/tags/')
-    - name: Export the pom project version to the job environment and save it as an ouput of this job
-      id: setversion
-      run: |
-        v=$(mvn help:evaluate "-Dexpression=project.version" --file pom.xml -q -DforceStdout)
-        echo "::set-env name=BUILD_VERSION::${v}"
-        echo "::set-output name=version::${v}"
+    #  Does not work under windows
+    #- name: Export the pom project version to the job environment and save it as an ouput of this job
+    #  id: setversion
+    #  run:
+    #     v=$(mvn help:evaluate "-Dexpression=project.version" --file pom.xml -q -DforceStdout)
+    #     echo "::set-env name=BUILD_VERSION::${v}"
+    #     echo "::set-output name=version::${v}"
     - name: Build buildkit with Maven
       run: mvn -B install --file pom.xml -Pbuildkit
     - name: Uploads the buildkit for possible further use
