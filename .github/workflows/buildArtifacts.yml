@@ -83,8 +83,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ KIT_NAME }}-linux.zip #TODO
-          asset_name: ${{ KIT_NAME }}-linux.zip
+          asset_path: kit-linux.zip #TODO
+          asset_name: kit-linux.zip
           asset_content_type: application/zip
       - name: Upload mac kit to GitHub Releases
         uses: actions/upload-release-asset@v1.0.2
@@ -93,7 +93,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: buildkit-mac.zip #TODO
-          asset_name: ${{ KIT_NAME }}-mac.zip
+          asset_name: kit-mac.zip
           asset_content_type: application/zip
       - name: Upload windows kit to GitHub Releases
         uses: actions/upload-release-asset@v1.0.2
@@ -102,5 +102,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: buildkit-win.zip  #TODO
-          asset_name: ${{ KIT_NAME }}-win.zip
+          asset_name: kit-win.zip
           asset_content_type: application/zip
