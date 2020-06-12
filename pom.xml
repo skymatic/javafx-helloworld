@@ -32,7 +32,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>14</maven.compiler.release>
         <java.jpms.modulename>de.skymatic.javafxtest</java.jpms.modulename>
-        <build.jlink.alreadyExists>false</build.jlink.alreadyExists>
+        <runtimeImageAlreadyBuild>false</runtimeImageAlreadyBuild>
     </properties>
 
     <dependencies>
@@ -220,7 +220,7 @@
                 </executions>
                 <configuration>
                     <executable>jlink</executable>
-					<skip>${build.jlink.alreadyExists}</skip>
+					<skip>${runtimeImageAlreadyBuild}</skip>
                     <!-- optional -->
                     <workingDirectory>${project.build.directory}</workingDirectory>
                     <commandlineArgs>--strip-debug --no-man-pages --no-header-files --compress=1 --module-path ./libs

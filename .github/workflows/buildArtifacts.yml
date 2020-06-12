@@ -49,7 +49,7 @@ jobs:
         name: ${{ env.KIT_NAME }}-${{ matrix.os }}-${{ env.BUILD_VERSION }}
         path: target/javafx-testkit-*.zip
     - name: Build package with Maven
-      run: mvn -B package --file pom.xml -Ppackage -Dbuild.jlink.alreadyExists=true
+      run: mvn -B package --file pom.xml -Ppackage -DruntimeImageAlreadyBuild=true
     - name: Uploads the package for possible further use
       uses: actions/upload-artifact@v2
       with:
