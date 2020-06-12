@@ -32,6 +32,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>14</maven.compiler.release>
         <java.jpms.modulename>de.skymatic.javafxtest</java.jpms.modulename>
+        <build.jlink.alreadyExists>false</build.jlink.alreadyExists>
     </properties>
 
     <dependencies>
@@ -151,6 +152,7 @@
                                     <goal>exec</goal>
                                 </goals>
                                 <configuration>
+									<skip>false</skip>
                                     <executable>${env.JAVA_HOME}/bin/jpackage</executable>
                                     <workingDirectory>${project.build.directory}</workingDirectory>
                                     <commandlineArgs>--name javafx-helloworld --type app-image -m ${java.jpms.modulename}/${java.jpms.modulename}.App --runtime-image runtimeImage --app-version ${project.version} --vendor "Skymatic GmbH" </commandlineArgs>
@@ -218,6 +220,7 @@
                 </executions>
                 <configuration>
                     <executable>jlink</executable>
+					<skip>${build.jlink.alreadyExists}</skip>
                     <!-- optional -->
                     <workingDirectory>${project.build.directory}</workingDirectory>
                     <commandlineArgs>--strip-debug --no-man-pages --no-header-files --compress=1 --module-path ./libs
