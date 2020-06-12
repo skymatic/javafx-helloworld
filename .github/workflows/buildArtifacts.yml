@@ -32,12 +32,12 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     - name: Ensure to use tagged version
-      run: mvn versions:set --file main/pom.xml -DnewVersion=${GITHUB_REF##*/} # use shell parameter expansion to strip of 'refs/tags'
+      run: mvn versions:set --file pom.xml -DnewVersion=${GITHUB_REF##*/} # use shell parameter expansion to strip of 'refs/tags'
       if: startsWith(github.ref, 'refs/tags/')
     - name: Export the pom project version to the job environment and save it as an ouput of this job
       id: setversion
       run: |
-        v=$(mvn help:evaluate "-Dexpression=project.version" --file main/pom.xml -q -DforceStdout)
+        v=$(mvn help:evaluate "-Dexpression=project.version" --file pom.xml -q -DforceStdout)
         echo "::set-env name=BUILD_VERSION::${v}"
         echo "::set-output name=version::${v}"
     - name: Build buildkit with Maven
@@ -48,7 +48,7 @@ jobs:
         name: ${{ env.KIT_NAME }}-${{ matrix.os }}-${{ env.BUILD_VERSION }}
         path: target/javafx-testkit-*.zip
     - name: Build package with Maven
-      run: mvn -B package --file pom.xml -Ppackage- Dbuild.jlink.alreadyExists=true
+      run: mvn -B package --file pom.xml -Ppackage -Dbuild.jlink.alreadyExists=true
     - name: Uploads the package for possible further use
       uses: actions/upload-artifact@v2
       with:
