@@ -45,14 +45,14 @@ jobs:
     - name: Uploads the buildkit for possible further use
       uses: actions/upload-artifact@v2
       with:
-        name: ${{env.KIT_NAME}-${{matrix.os}}-${{ env.BUILD_VERSION }}
+        name: ${{ env.KIT_NAME }}-${{ matrix.os }}-${{ env.BUILD_VERSION }}
         path: target/javafx-testkit-*.zip
     - name: Build package with Maven
       run: mvn -B package --file pom.xml -Ppackage- Dbuild.jlink.alreadyExists=true
     - name: Uploads the package for possible further use
       uses: actions/upload-artifact@v2
       with:
-        name: ${{env.PCK_NAME}-${{matrix.os}}-${{ env.BUILD_VERSION }}
+        name: ${{ env.PCK_NAME }}-${{ matrix.os }}-${{ env.BUILD_VERSION }}
         path: target/javafx-helloworld
 
   release:
@@ -83,7 +83,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: $${{ KIT_NAME }}-linux.zip #TODO
+          asset_path: ${{ KIT_NAME }}-linux.zip #TODO
           asset_name: ${{ KIT_NAME}-linux.zip
           asset_content_type: application/zip
       - name: Upload mac kit to GitHub Releases
