@@ -37,7 +37,7 @@
 			<outputDirectory></outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>target/runtime</directory>
+			<directory>target/runtimeImage</directory>
 			<includes>
 				<include>**/**</include>
 			</includes>

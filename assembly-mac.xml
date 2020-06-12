@@ -32,12 +32,12 @@
 		<fileSet>
 			<directory>target/</directory>
 			<includes>
-				<include>runtime</include>
+				<include>runtimeImage</include>
 			</includes>
 			<outputDirectory></outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>target/runtime</directory>
+			<directory>target/runtimeImage</directory>
 			<includes>
 				<include>**/**</include>
 			</includes>
