@@ -7,7 +7,8 @@ env:
   APP_NAME: helloJavaFX
   KIT_NAME: kit
   PKG_NAME: pkg
- 
+  BUILD_VERSION: SNAPSHOT
+
 jobs:
   build:
     name: Creates the executable Javafx test apps for different systems
@@ -19,7 +20,6 @@ jobs:
     outputs:
       artifact-version: SNAPSHOT #${{ steps.setversion.outputs.version }}
     env:
-      BUILD_VERSION: SNAPSHOT
       TARGET_OS: ANY
     steps:
     - name: Set correct OS label (win)
