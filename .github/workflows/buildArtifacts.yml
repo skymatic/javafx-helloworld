@@ -4,8 +4,9 @@ on:
  [push]
 
 env:
-  KIT_NAME: javafx-helloworld-kit
-  PCK_NAME: javafx-helloworld-package
+  APP_NAME: helloJavaFX
+  KIT_NAME: kit
+  PKG_NAME: pkg
  
 jobs:
   build:
@@ -19,7 +20,17 @@ jobs:
       artifact-version: SNAPSHOT #${{ steps.setversion.outputs.version }}
     env:
       BUILD_VERSION: SNAPSHOT
+      TARGET_OS: ANY
     steps:
+    - name: Set correct OS label (win)
+      if: ${{ runner.os == "Windows" }}
+      run: echo "::set-env name=TARGET_OS::win"
+    - name: Set correct OS label (mac)
+      if: ${{ runner.os == "macOS" }}
+      run: echo "::set-env name=TARGET_OS::mac"
+    - name: Set correct OS label (linux)
+      if: ${{ runner.os == "Linux" }}
+      run: echo "::set-env name=TARGET_OS::linux"
     - uses: actions/checkout@v1
     - name: Set up JDK 14
       uses: actions/setup-java@v1
@@ -32,28 +43,23 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     - name: Ensure to use tagged version
-      run: mvn versions:set --file pom.xml -DnewVersion=${GITHUB_REF##*/} # use shell parameter expansion to strip of 'refs/tags'
+      run: |
+        mvn versions:set --file pom.xml -DnewVersion=${GITHUB_REF##*/} # use shell parameter expansion to strip of 'refs/tags'
+        echo "::set-env name=BUILD_VERSION::${GITHUB_REF##*/}"
       if: startsWith(github.ref, 'refs/tags/')
-    #  Does not work under windows
-    #- name: Export the pom project version to the job environment and save it as an ouput of this job
-    #  id: setversion
-    #  run:
-    #     v=$(mvn help:evaluate "-Dexpression=project.version" --file pom.xml -q -DforceStdout)
-    #     echo "::set-env name=BUILD_VERSION::${v}"
-    #     echo "::set-output name=version::${v}"
     - name: Build buildkit with Maven
       run: mvn -B install --file pom.xml -Pbuildkit
     - name: Uploads the buildkit for possible further use
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ env.KIT_NAME }}-${{ matrix.os }}-${{ env.BUILD_VERSION }}
+        name: ${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-${{ env.TARGET_OS }}
         path: target/javafx-testkit-*.zip
     - name: Build package with Maven
       run: mvn -B package --file pom.xml -Ppackage -DruntimeImageAlreadyBuild=true
     - name: Uploads the package for possible further use
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ env.PCK_NAME }}-${{ matrix.os }}-${{ env.BUILD_VERSION }}
+        name: ${{ env.APP_NAME }}-${{ env.PKG_NAME }}-${{ env.BUILD_VERSION }}-${{ env.TARGET_OS }}
         path: target/javafx-helloworld
 
   release:
