@@ -56,6 +56,9 @@ jobs:
         path: target/javafx-testkit-*.zip
     - name: Build package with Maven
       run: mvn -B package --file pom.xml -Ppackage -DruntimeImageAlreadyBuild=true
+    - name: Listing build dir. Only for debugging
+      run: ls -al
+      if: ${{ runner.os == 'macOS' }}
     - name: Uploads the package for possible further use
       uses: actions/upload-artifact@v2
       with:
