@@ -23,13 +23,13 @@ jobs:
       TARGET_OS: ANY
     steps:
     - name: Set correct OS label (win)
-      if: ${{ runner.os == "Windows" }}
+      if: ${{ runner.os == 'Windows' }}
       run: echo "::set-env name=TARGET_OS::win"
     - name: Set correct OS label (mac)
-      if: ${{ runner.os == "macOS" }}
+      if: ${{ runner.os == 'macOS' }}
       run: echo "::set-env name=TARGET_OS::mac"
     - name: Set correct OS label (linux)
-      if: ${{ runner.os == "Linux" }}
+      if: ${{ runner.os == 'Linux' }}
       run: echo "::set-env name=TARGET_OS::linux"
     - uses: actions/checkout@v1
     - name: Set up JDK 14
