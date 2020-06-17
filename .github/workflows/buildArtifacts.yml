@@ -7,7 +7,6 @@ env:
   APP_NAME: helloJavaFX
   KIT_NAME: kit
   PKG_NAME: pkg
-  BUILD_VERSION: SNAPSHOT
 
 jobs:
   build:
@@ -21,6 +20,7 @@ jobs:
       artifact-version: SNAPSHOT #${{ steps.setversion.outputs.version }}
     env:
       TARGET_OS: ANY
+      BUILD_VERSION: SNAPSHOT
     steps:
     - name: Set correct OS label (win)
       if: ${{ runner.os == 'Windows' }}
@@ -73,7 +73,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: startsWith(github.ref, 'refs/tags/')
+    env:
+      BUILD_VERSION: DUMMY
     steps:
+      - name: Get version from tag and set up environment
+        run: echo "::set-env name=BUILD_VERSION::${GITHUB_REF##*/}"
       - name: Download all artifacts
         uses: actions/download-artifact@v2
       - name: Display structure of dowloaded files. This stepp will be removed with the next release.
