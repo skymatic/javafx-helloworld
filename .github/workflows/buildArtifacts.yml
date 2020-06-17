@@ -58,14 +58,14 @@ jobs:
     - name: Uploads the buildkit for possible further use
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-${{ env.TARGET_OS }}
+        name: ${{ env.APP_NAME }}-${{ env.BUILD_VERSION }}-${{ env.TARGET_OS }}-${{ env.KIT_NAME }}
         path: target/javafx-testkit-${{ env.TARGET_OS }}.zip
     - name: Build package with Maven
       run: mvn -B package --file pom.xml -Ppackage -DruntimeImageAlreadyBuild=true
     - name: Uploads the package for possible further use
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ env.APP_NAME }}-${{ env.PKG_NAME }}-${{ env.BUILD_VERSION }}-${{ env.TARGET_OS }}
+        name: ${{ env.APP_NAME }}-${{ env.BUILD_VERSION }}-${{ env.TARGET_OS }}-${{ env.KIT_NAME }}
         path: target/javafx-helloworld*
 
   release:
