@@ -5,8 +5,6 @@ on:
 
 env:
   APP_NAME: helloJavaFX
-  KIT_NAME: kit
-  PKG_NAME: pkg
 
 jobs:
   build:
@@ -19,18 +17,8 @@ jobs:
     outputs:
       artifact-version: SNAPSHOT #${{ steps.setversion.outputs.version }}
     env:
-      TARGET_OS: ANY
       BUILD_VERSION: SNAPSHOT
     steps:
-    - name: Set correct OS label (win)
-      if: ${{ runner.os == 'Windows' }}
-      run: echo "::set-env name=TARGET_OS::win"
-    - name: Set correct OS label (mac)
-      if: ${{ runner.os == 'macOS' }}
-      run: echo "::set-env name=TARGET_OS::mac"
-    - name: Set correct OS label (linux)
-      if: ${{ runner.os == 'Linux' }}
-      run: echo "::set-env name=TARGET_OS::linux"
     - uses: actions/checkout@v1
     - name: Set up JDK 14
       uses: actions/setup-java@v1
@@ -45,7 +33,7 @@ jobs:
     - name: If tag is set, use it as version
       run: echo "::set-env name=BUILD_VERSION::${GITHUB_REF##*/}"
       if: startsWith(github.ref, 'refs/tags/') && runner.os != 'Windows'
-    - name: If tag is set, use it as version (windows)
+    - name: If tag is set, use it as version (windows special)
       run: |
         $v = ${GITHUB_REF} -replace 'refs/tags/',''
         echo "::set-env name=BUILD_VERSION::${v}"
@@ -53,20 +41,13 @@ jobs:
     - name: Ensure to use tagged version in maven
       run: mvn versions:set --file pom.xml -DnewVersion=${{ env.BUILD_VERSION }}
       if: startsWith(github.ref,'refs/tags/')
-    - name: Build buildkit with Maven
-      run: mvn -B install --file pom.xml -Pbuildkit
-    - name: Uploads the buildkit for possible further use
+    - name: Build runnable app with Maven
+      run: mvn -B install --file pom.xml
+    - name: Uploads the zip for possible further use
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ env.APP_NAME }}-${{ env.BUILD_VERSION }}-${{ env.TARGET_OS }}-${{ env.KIT_NAME }}
-        path: target/javafx-testkit-${{ env.TARGET_OS }}.zip
-    - name: Build package with Maven
-      run: mvn -B package --file pom.xml -Ppackage -DruntimeImageAlreadyBuild=true
-    - name: Uploads the package for possible further use
-      uses: actions/upload-artifact@v2
-      with:
-        name: ${{ env.APP_NAME }}-${{ env.BUILD_VERSION }}-${{ env.TARGET_OS }}-${{ env.KIT_NAME }}
-        path: target/javafx-helloworld*
+        name: ${{ env.APP_NAME }}-SNAPSHOT-${{ runner.os }}
+        path: target/helloJavaFX-*.zip
 
   release:
     name: Draft a Release on GitHub Releases
@@ -94,23 +75,14 @@ jobs:
             :construction: Work in Progress
           draft: true
           prerelease: false
-      - name: Upload linux kit to GitHub Releases
+      - name: Upload linux package to GitHub Releases
         uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-linux/${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-linux.zip
-          asset_name: ${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-linux.zip
-          asset_content_type: application/zip
-      - name: Upload linux pkg to GitHub Releases
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.APP_NAME }}-${{ env.PKG_NAME }}-${{ env.BUILD_VERSION }}-linux/
-          asset_name: ${{ env.APP_NAME }}-${{ env.PKG_NAME }}-${{ env.BUILD_VERSION }}-linux.zip
+          asset_path: ${{ env.APP_NAME }}-SNAPSHOT-Linux/helloJavaFX-*
+          asset_name: ${{ env.APP_NAME }}-${{ env.BUILD_VERSION }}-linux.zip
           asset_content_type: application/zip
       - name: Upload mac kit to GitHub Releases
         uses: actions/upload-release-asset@v1.0.2
@@ -118,17 +90,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-mac/${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-mac.zip
-          asset_name: ${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-mac.zip
-          asset_content_type: application/zip
-      - name: Upload mac pkg to GitHub Releases
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.APP_NAME }}-${{ env.PKG_NAME }}-${{ env.BUILD_VERSION }}-mac/
-          asset_name: ${{ env.APP_NAME }}-${{ env.PKG_NAME }}-${{ env.BUILD_VERSION }}-mac.zip
+          asset_path: ${{ env.APP_NAME }}-SNAPSHOT-macOS/helloJavaFX-*
+          asset_name: ${{ env.APP_NAME }}-${{ env.BUILD_VERSION }}-mac.zip
           asset_content_type: application/zip
       - name: Upload windows kit to GitHub Releases
         uses: actions/upload-release-asset@v1.0.2
@@ -136,15 +99,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-win/${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-win.zip
-          asset_name: ${{ env.APP_NAME }}-${{ env.KIT_NAME }}-${{ env.BUILD_VERSION }}-win.zip
-          asset_content_type: application/zip
-      - name: Upload windows pkg to GitHub Releases
-        uses: actions/upload-release-asset@v1.0.2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.APP_NAME }}-${{ env.PKG_NAME }}-${{ env.BUILD_VERSION }}-mac/
-          asset_name: ${{ env.APP_NAME }}-${{ env.PKG_NAME }}-${{ env.BUILD_VERSION }}-mac.zip
+          asset_path: ${{ env.APP_NAME }}-SNAPSHOT-Windows/helloJavaFX-*
+          asset_name: ${{ env.APP_NAME }}-${{ env.BUILD_VERSION }}-win.zip
           asset_content_type: application/zip
