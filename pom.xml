@@ -11,7 +11,7 @@
     </organization>
 
     <name>JavaFX Hello World Example</name>
-    <description>Creates a JavaFx demo application and bundles it in packages for different OS.</description>
+    <description>A JavaFX demo application for testing purpose.</description>
     <url>https://github.com/skymatic/javafx-helloworld</url>
 
     <scm>
