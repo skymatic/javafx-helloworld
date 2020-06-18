@@ -47,7 +47,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ${{ env.APP_NAME }}-SNAPSHOT-${{ runner.os }}
-        path: target/helloJavaFX-*.zip
+        path: target/helloJavaFX-*.[zt]*
 
   release:
     name: Draft a Release on GitHub Releases
