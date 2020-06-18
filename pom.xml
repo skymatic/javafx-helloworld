@@ -150,7 +150,7 @@
                             <!-- the maven assembly plugin depend on directory name, so be careful when changing it -->
                             <commandlineArgs>--name helloJavaFX --type app-image -m ${java.jpms.modulename}/${java.jpms.modulename}.App
                                 --runtime-image runtimeImage --app-version ${project.version} --vendor "Skymatic GmbH"
-                                --description "${project.description}" --icon ../skymatic.ico
+                                --description "${project.description}" --icon ${project.basedir}/src/main/resources/skymatic.ico
                             </commandlineArgs>
                         </configuration>
                     </execution>
