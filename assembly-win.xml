@@ -10,38 +10,23 @@
 		<fileSet>
 			<directory>target/</directory>
 			<includes>
-				<include>version.txt</include>
+				<include>helloJavaFX</include>
 			</includes>
-			<outputDirectory>libs</outputDirectory>
+			<outputDirectory></outputDirectory>
 		</fileSet>
 		<fileSet>
 			<directory>target/</directory>
 			<includes>
 				<include>LICENSE.txt</include>
 			</includes>
-			<outputDirectory></outputDirectory>
+			<outputDirectory>helloJavaFX</outputDirectory>
 		</fileSet>
 		<fileSet>
-			<directory>target/</directory>
-			<includes>
-				<include>launcher-win.bat</include>
-			</includes>
-			<outputDirectory></outputDirectory>
-			<fileMode>0755</fileMode>
-		</fileSet>
-		<fileSet>
-			<directory>target/</directory>
-			<includes>
-				<include>runtime</include>
-			</includes>
-			<outputDirectory></outputDirectory>
-		</fileSet>
-		<fileSet>
-			<directory>target/runtimeImage</directory>
+			<directory>target/helloJavaFX</directory>
 			<includes>
 				<include>**/**</include>
 			</includes>
-			<outputDirectory>runtime</outputDirectory>
+			<outputDirectory>helloJavaFX</outputDirectory>
 		</fileSet>
 	</fileSets>
 </assembly>
