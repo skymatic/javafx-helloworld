@@ -1,0 +1,14 @@
+on:
+  issues:
+    types: [opened]
+jobs:
+  validateIssue:
+    runs-on: ubuntu-latest
+    steps:
+      - if: contains(github.event.issue.labels.*.name, 'bug') && !contains(github.event.issue.body, '<!-- abcdef -->')
+        name: Close Issue
+        uses: peter-evans/close-issue@v1
+        with:
+          comment: |
+            Issue does not conform to issue template.
+            Auto-closing this issue.
