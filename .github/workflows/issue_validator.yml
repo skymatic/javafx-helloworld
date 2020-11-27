@@ -14,9 +14,4 @@ jobs:
             Auto-closing this issue.
         env:
           MUST_CONTAIN: "### Description"
-          MUST_NOT_CONTAIN: |
-            ### Description
-
-            [Summarize your problem.]
-
-            ### System Setup
+          MUST_NOT_CONTAIN: "### Description\n\n[Summarize your problem.]\n\n### System Setup"
