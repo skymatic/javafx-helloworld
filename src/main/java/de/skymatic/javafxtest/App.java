@@ -7,7 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -28,8 +31,16 @@ public class App extends Application {
 		vbox.setPadding(new Insets(20));
 		vbox.setAlignment(Pos.CENTER);
 		vbox.setSpacing(10);
-		var scene = new Scene(vbox, 640, 480);
+
+		var text = new Text("子貢問曰：有一言而可以終身行之者乎？子曰：其恕乎！己所不欲、勿施於人。"); //https://en.wikipedia.org/wiki/Confucius
+		var quoteBox = new HBox(text);
+		quoteBox.setAlignment(Pos.BOTTOM_RIGHT);
+		HBox.setMargin(text, new Insets(20));
+
+		var stackPane = new StackPane(quoteBox, vbox);
+		var scene = new Scene(stackPane, 640, 480);
 		stage.setScene(scene);
+		stage.setTitle("JavaFX Test App");
 		stage.show();
 	}
 
