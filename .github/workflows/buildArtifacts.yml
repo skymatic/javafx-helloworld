@@ -20,10 +20,10 @@ jobs:
       BUILD_VERSION: SNAPSHOT
     steps:
     - uses: actions/checkout@v1
-    - name: Set up JDK 14
+    - name: Set up JDK
       uses: actions/setup-java@v1
       with: 
-        java-version: 14
+        java-version: 15
     - uses: actions/cache@v1
       with:
         path: ~/.m2/repository
@@ -31,12 +31,12 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
     - name: If tag is set, use it as version
-      run: echo "::set-env name=BUILD_VERSION::${GITHUB_REF##*/}"
+      run: echo "BUILD_VERSION=${GITHUB_REF##*/}"
       if: startsWith(github.ref, 'refs/tags/') && runner.os != 'Windows'
     - name: If tag is set, use it as version (windows special)
       run: |
         $v = ${GITHUB_REF} -replace 'refs/tags/',''
-        echo "::set-env name=BUILD_VERSION::${v}"
+        echo "BUILD_VERSION=${v}"
       if: startsWith(github.ref, 'refs/tags/') && runner.os == 'Windows'
     - name: Ensure to use tagged version in maven
       run: mvn versions:set --file pom.xml -DnewVersion=${{ env.BUILD_VERSION }}

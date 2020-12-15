@@ -30,15 +30,17 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>14</maven.compiler.release>
+        <maven.compiler.release>15</maven.compiler.release>
         <java.jpms.modulename>de.skymatic.javafxtest</java.jpms.modulename>
+
+        <javafx.version>15</javafx.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>14</version>
+            <version>${javafx.version}</version>
         </dependency>
     </dependencies>
 
