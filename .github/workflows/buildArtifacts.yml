@@ -19,12 +19,12 @@ jobs:
     env:
       BUILD_VERSION: SNAPSHOT
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Set up JDK
       uses: actions/setup-java@v1
       with: 
         java-version: 15
-    - uses: actions/cache@v1
+    - uses: actions/cache@v2
       with:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -36,6 +36,7 @@ jobs:
       if: startsWith(github.ref, 'refs/tags/')
     - name: Ensure to use tagged version in maven
       run: mvn versions:set --file pom.xml -DnewVersion=${{ env.BUILD_VERSION }}
+      shell: bash
       if: startsWith(github.ref,'refs/tags/')
     - name: Build runnable app with Maven
       run: mvn -B install --file pom.xml
@@ -54,11 +55,9 @@ jobs:
       BUILD_VERSION: DUMMY
     steps:
       - name: Get version from tag and set up environment
-        run: echo "::set-env name=BUILD_VERSION::${GITHUB_REF##*/}"
+        run: echo "BUILD_VERSION::${GITHUB_REF##*/}"
       - name: Download all artifacts
         uses: actions/download-artifact@v2
-      - name: Display structure of dowloaded files. This stepp will be removed with the next release.
-        run: ls -R #TODO: remove this step and fix the ones below
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
