@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -27,6 +28,13 @@ public class App extends Application {
 		var textInputFiled = new TextField();
 		textInputFiled.setPromptText("Test text field: Enter anything you want.");
 		var button = new Button("Test Button");
+		button.setOnAction(actionEvent -> {
+			var fileChooser = new FileChooser();
+			var file = fileChooser.showOpenDialog(stage);
+			if( file != null){
+				System.out.println(file.getPath());
+			}
+		});
 		var vbox = new VBox(label, textInputFiled, button);
 		vbox.setPadding(new Insets(20));
 		vbox.setAlignment(Pos.CENTER);
