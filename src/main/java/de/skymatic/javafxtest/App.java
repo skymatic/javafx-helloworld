@@ -14,7 +14,7 @@ import java.util.UUID;
  */
 public class App extends Application {
 
-	private static final String PROBLEMATIC_CHAR = "\uD83C\uDF40"; //pile of poo emoji
+	private static final String PROBLEMATIC_CHAR = "\uD83C\uDF40"; //FOUR LEAF CLOVER
 	private static final String tmpDir = System.getProperty("java.io.tmpdir");
 
 	private static Path workingDir;
@@ -46,6 +46,5 @@ public class App extends Application {
 		assert workingDir != null;
 		launch();
 	}
-
 
 }
