@@ -13,5 +13,5 @@ jobs:
             Issue does not conform to issue template.
             Auto-closing this issue.
         env:
-          MUST_CONTAIN: "### Description"
-          MUST_NOT_CONTAIN: "### Description\r\n[Summarize your problem.]\r\n### System Setup"
+          MUST_CONTAIN: '### Description'
+          MUST_NOT_CONTAIN: '### Description\r\n[Summarize your problem.]\r\n### System Setup'
