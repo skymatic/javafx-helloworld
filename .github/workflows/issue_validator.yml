@@ -5,7 +5,7 @@ jobs:
   validateIssue:
     runs-on: ubuntu-latest
     steps:
-      - if: contains(github.event.issue.labels.*.name, 'bug') && (!contains(github.event.issue.body, env.MUST_CONTAIN) || contains(github.event.issue.body, env.MUST_NOT_CONTAIN))
+      - if: contains(github.event.issue.labels.*.name, 'bug') && (!contains(github.event.issue.body, env.MUST_CONTAIN) || contains(toJson(github.event.issue.body), env.MUST_NOT_CONTAIN))
         name: Close Issue
         uses: peter-evans/close-issue@v1
         with:
@@ -14,4 +14,4 @@ jobs:
             Auto-closing this issue.
         env:
           MUST_CONTAIN: "### Description"
-          MUST_NOT_CONTAIN: "### Description\n\n[Summarize your problem.]\n\n### System Setup"
+          MUST_NOT_CONTAIN: "### Description\r\n[Summarize your problem.]\r\n### System Setup"
