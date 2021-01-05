@@ -5,7 +5,7 @@ jobs:
   validateIssue:
     runs-on: ubuntu-latest
     steps:
-      - if: contains(github.event.issue.labels.*.name, 'bug') && (!contains(github.event.issue.body, env.MUST_CONTAIN) || contains(toJson(github.event.issue.body), '### Description\r\n\r\n[Summarize your problem.]\r\n\r\n### System Setup'))
+      - if: contains(github.event.issue.labels.*.name, 'bug') && (!contains(github.event.issue.body, env.MUST_CONTAIN) || contains(toJson(github.event.issue.body), env.MUST_NOT_CONTAIN))
         name: Close Issue
         uses: peter-evans/close-issue@v1
         with:
@@ -13,5 +13,5 @@ jobs:
             Issue does not conform to issue template.
             Auto-closing this issue.
         env:
-          MUST_CONTAIN: "### Description"
-          MUST_NOT_CONTAIN: "### Description\r\n\r\n[Summarize your problem.]\r\n\r\n### System Setup"
+          MUST_CONTAIN: '### Description'
+          MUST_NOT_CONTAIN: '### Description\r\n\r\n[Summarize your problem.]\r\n\r\n### System Setup'
