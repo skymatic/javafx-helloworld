@@ -10,7 +10,7 @@ jobs:
       - name: Check "Description"
         if: |
           !contains(github.event.issue.body, env.MUST_CONTAIN)
-          || contains(toJson(github.event.issue.body), env.MUST_NOT_CONTAIN))
+          || contains(toJson(github.event.issue.body), env.MUST_NOT_CONTAIN)
         run: exit 1
         continue-on-error: true
         env:
@@ -19,7 +19,7 @@ jobs:
       - name: Check "Steps to Reproduce"
         if: |
           !contains(github.event.issue.body, env.MUST_CONTAIN)
-          || contains(toJson(github.event.issue.body), env.MUST_NOT_CONTAIN))
+          || contains(toJson(github.event.issue.body), env.MUST_NOT_CONTAIN)
         run: exit 1
         continue-on-error: true
         env:
