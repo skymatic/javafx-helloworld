@@ -5,7 +5,7 @@ jobs:
   closeTemplateViolation:
     name: Close bug reports that violate the issue template
     runs-on: ubuntu-latest
-    if: contains(github.event.issue.labels.*.name, 'type:bug')
+    if: contains(github.event.issue.labels.*.name, 'bug')
     steps:
       - name: Check "Description"
         if: |
