@@ -26,7 +26,7 @@ jobs:
           MUST_CONTAIN: '### Steps to Reproduce'
           MUST_NOT_CONTAIN: '### Steps to Reproduce\r\n\r\n1. [First step]\r\n2. [Second step]\r\n3. [and so on…]\r\n\r\n#### Expected Behavior'
       - name: Close issue if one of the checks failed
-        if: failure()
+        if: ${{ failure() }}
         uses: peter-evans/close-issue@v1
         with:
           comment: |
