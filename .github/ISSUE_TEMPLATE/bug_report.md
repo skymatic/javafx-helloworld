@@ -1,42 +1,63 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: bug
-assignees: ''
-
+name: "Bug Report"
+about: "Create a report to help us improve"
+labels: type:bug
 ---
 
-<!-- ⚠⚠⚠ READ CAREFULLY ⚠⚠⚠ -->
-<!-- Please stick to this template. Otherwise the issue will get closed immediately. As a proof that you read this instruction, please remove the X from the following line. -->
-<!-- abcXdef -->
+<!--
+**************************************
+    ⚠️⚠️⚠️ READ CAREFULLY ⚠️⚠️⚠️
+**************************************
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+Do you want to ask a QUESTION? Are you looking for SUPPORT?
+We're happy to help you via our support channels! Please read: https://github.com/cryptomator/cryptomator/blob/develop/SUPPORT.md
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+By filing an issue, you are expected to comply with our code of conduct: https://github.com/cryptomator/cryptomator/blob/develop/.github/CODE_OF_CONDUCT.md
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+Of course, we also expect you to search for existing similar issues first! ;) https://github.com/cryptomator/cryptomator/issues?q=
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+⚠️ IMPORTANT: If you don't stick to this template, the issue will get closed.
+-->
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+### Description
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+[Summarize your problem.]
 
-**Additional context**
-Add any other context about the problem here.
+### System Setup
+
+* Operating system and version: [Windows/macOS/Linux + Version ( + Desktop Environment, if Linux)]
+* Cryptomator version: [Shown in the settings]
+* Volume type: [Dokany/FUSE/WebDAV, shown in the settings]
+
+### Steps to Reproduce
+
+1. [First step]
+2. [Second step]
+3. [and so on…]
+
+#### Expected Behavior
+
+[What you expect to happen.]
+
+#### Actual Behavior
+
+[What actually happens.]
+
+#### Reproducibility
+
+[Always/Intermittent/Only once]
+
+### Additional Information
+
+[Any additional information, log files, screenshots, configuration, or data that might be necessary to reproduce the issue.]
+
+<!--
+If you want to add the log file or screenshots, please add them as attachments. If your log file seems empty and doesn't show any errors, you may enable the debug mode first. Here is how to do that: https://community.cryptomator.org/t/how-do-i-enable-debug-mode/36
+
+Then reproduce the problem to ensure all important information is contained in there. You may use test data or redact sensitive information from the log file.
+
+Log file location:
+- Windows: %appdata%/Cryptomator
+- macOS: ~/Library/Logs/Cryptomator
+- Linux: ~/.local/share/Cryptomator/logs
+-->
