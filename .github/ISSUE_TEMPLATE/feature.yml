@@ -7,7 +7,7 @@ body:
     attributes:
       label: Please agree to the following
       options:
-      - label: I have searched the [existing issues](https://github.com/cryptomator/cryptomator/issues?q=)
+      - label: I have searched [existing issues](https://github.com/cryptomator/cryptomator/issues?q=) for duplicates
         required: true
       - label: I agree to follow this project's [Code of Conduct](https://github.com/cryptomator/cryptomator/blob/develop/.github/CODE_OF_CONDUCT.md)
         required: true
@@ -15,17 +15,14 @@ body:
     id: summary
     attributes:
       label: Summary
-      description: Please summarize your feature request
+      placeholder: Please summarize your feature request.
     validations:
       required: true
   - type: textarea
     id: motivation
     attributes:
       label: Motivation
-      description: |
-        Who requires this feature?
-        What problem does the user face?
-        How would this feature solve the problem?
+      description: Who requires this feature? What problem does the user face? How would this feature solve the problem?
     validations:
       required: true
   - type: textarea
@@ -37,4 +34,4 @@ body:
     id: context
     attributes:
       label: Anything else?
-      description: Any context, suggestions, screenshots or concepts you want to share?
+      description: Any context, suggestions, screenshots, or concepts you want to share?
