@@ -1,29 +1,21 @@
 name: Bug Report
 description: Create a report to help us improve
-title: "[Bug]: "
 labels: ["type:bug"]
 body:
   - type: checkboxes
-    id: searched-for-existing-issues
-    attributes:
-      label: Existing Issues
-      description: Before submitting this, please make sure to search for [existing issues](https://github.com/cryptomator/cryptomator/issues?q=)
-      options:
-      - label: I have searched the existing issues
-        required: true
-  - type: checkboxes
     id: terms
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/cryptomator/cryptomator/blob/develop/.github/CODE_OF_CONDUCT.md)
+      label: Please agree to the following
       options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      - label: I have searched the [existing issues](https://github.com/cryptomator/cryptomator/issues?q=)
+        required: true
+      - label: I agree to follow this project's [Code of Conduct](https://github.com/cryptomator/cryptomator/blob/develop/.github/CODE_OF_CONDUCT.md)
+        required: true
   - type: input
     id: summary
     attributes:
       label: Summary
-      description: Please summarize your problem.
+      placeholder: Please summarize your problem.
     validations:
       required: true
   - type: textarea
@@ -39,7 +31,6 @@ body:
           - **OS**: 
           - **Cryptomator**: 
           - ...
-      render: markdown
     validations:
       required: true
   - type: dropdown
@@ -58,23 +49,17 @@ body:
     id: reproduction-steps
     attributes:
       label: Steps to Reproduce
-      description: |
-        examples:
+      placeholder: |
           1. Click *Unlock...*
           2. Enter no password
           3. Hit enter
-      value: |
-        1. [First step]
-        2. [Second step]
-        3. [and so on…]
-      render: markdown
     validations:
       required: true
   - type: textarea
     id: expected-behaviour
     attributes:
       label: Expected Behavior
-      description: What you expect to happen.
+      placeholder: What you expect to happen.
       render: markdown
     validations:
       required: true
@@ -82,7 +67,7 @@ body:
     id: actual-behaviour
     attributes:
       label: Actual Behavior
-      description: What actually happens.
+      placeholder: What actually happens.
       render: markdown
     validations:
       required: true
@@ -101,7 +86,9 @@ body:
     id: logs
     attributes:
       label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      placeholder: |
+        13:37:00.100 [main] INFO  org.cryptomator.launcher.Cryptomator - Starting Cryptomator 1.5.15 on Mac OS X 10.16 (x86_64)
+        13:37:00.200 [JavaFX Application Thread] INFO  o.c.ui.launcher.FxApplicationStarter - JavaFX Runtime started.
       render: shell
   - type: textarea
     id: further-info

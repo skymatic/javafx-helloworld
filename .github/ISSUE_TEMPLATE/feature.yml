@@ -4,21 +4,14 @@ title: "[Feature]: "
 labels: ["type:feature-request"]
 body:
   - type: checkboxes
-    id: searched-for-existing-issues
-    attributes:
-      label: Existing Issues
-      description: Before submitting this, please make sure to search for [existing issues](https://github.com/cryptomator/cryptomator/issues?q=)
-      options:
-      - label: I have searched the existing issues
-        required: true
-  - type: checkboxes
     id: terms
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/cryptomator/cryptomator/blob/develop/.github/CODE_OF_CONDUCT.md)
+      label: Please agree to the following
       options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      - label: I have searched the [existing issues](https://github.com/cryptomator/cryptomator/issues?q=)
+        required: true
+      - label: I agree to follow this project's [Code of Conduct](https://github.com/cryptomator/cryptomator/blob/develop/.github/CODE_OF_CONDUCT.md)
+        required: true
   - type: input
     id: summary
     attributes:
@@ -34,7 +27,6 @@ body:
         Who requires this feature?
         What problem does the user face?
         How would this feature solve the problem?
-      render: markdown
     validations:
       required: true
   - type: textarea
@@ -42,10 +34,8 @@ body:
     attributes:
       label: Considered Alternatives
       description: What current alternatives or workarounds have you considered? Is there a different way to solve the same problem?
-      render: markdown
   - type: textarea
     id: context
     attributes:
       label: Anything else?
       description: Any context, suggestions, screenshots or concepts you want to share?
-      render: markdown
