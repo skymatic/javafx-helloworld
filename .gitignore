@@ -25,6 +25,7 @@ hs_err_pid*
 # Maven #
 target/
 pom.xml.versionsBackup
+.mvn/maven-wrapper.jar
 
 # Eclipse Settings Files #
 .settings
