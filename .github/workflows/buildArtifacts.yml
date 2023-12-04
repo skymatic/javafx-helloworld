@@ -22,9 +22,9 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v4
       with:
-        distribution: zulu
+        distribution: temurin
         java-version: 21
-        java-package: jdk+fx
+        java-package: jdk
         cache: maven
     - name: Ensure to use tagged version in build
       shell: bash
