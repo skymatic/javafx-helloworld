@@ -30,10 +30,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>15</maven.compiler.release>
+        <jdk.version>21</jdk.version>
         <java.jpms.modulename>de.skymatic.javafxtest</java.jpms.modulename>
 
-        <javafx.version>15</javafx.version>
+        <!-- build dependencies -->
+        <javafx.version>21.0.1</javafx.version>
+
+        <!-- maven plugins -->
+        <mvn-compiler.version>3.11.0</mvn-compiler.version>
+        <mvn-jar.version>3.3.0</mvn-jar.version>
+        <mvn-dependency.version>3.6.1</mvn-dependency.version>
+        <mvn-resources.version>3.3.1</mvn-resources.version>
+        <mvn-exec.version>3.1.1</mvn-exec.version>
+        <mvn-assembly.version>3.6.0</mvn-assembly.version>
+        <mvn-javafx.version>0.0.8</mvn-javafx.version>
     </properties>
 
     <dependencies>
@@ -86,12 +96,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${mvn-compiler.version}</version>
+                <configuration>
+                    <release>${jdk.version}</release>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${mvn-jar.version}</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -106,7 +119,7 @@
 
             <plugin>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${mvn-dependency.version}</version>
                 <executions>
                     <execution>
                         <id>copy-libs</id>
@@ -124,7 +137,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${mvn-exec.version}</version>
                 <executions>
                     <execution>
                         <id>jlink</id>
@@ -162,7 +175,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${mvn-resources.version}</version>
                 <executions>
                     <execution>
                         <id>copy-resources</id>
@@ -189,7 +202,7 @@
 
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>${mvn-assembly.version}</version>
                 <executions>
                     <execution>
                         <id>assemble-buildkit</id>
@@ -212,7 +225,7 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.4</version>
+                <version>${mvn-javafx.version}</version>
                 <configuration>
                     <mainClass>de.skymatic.javafxtest.App</mainClass>
                 </configuration>
