@@ -50,7 +50,7 @@ jobs:
       BUILD_VERSION: DUMMY
     steps:
       - name: Download all artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
       - name: Create a release
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v1
